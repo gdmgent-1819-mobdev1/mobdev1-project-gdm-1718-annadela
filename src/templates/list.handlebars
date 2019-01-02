@@ -1,17 +1,19 @@
-{{> header }}
 <div class="page list">
-  <h1>{{title}}</h1>
-  <div class="body">
-    {{#if loading}}
-      Loading data, please wait...
-    {{else}}
-    <ul>
-      {{#each posts}}
-        <li>{{this.title}}</li>
-      {{/each}}
-    </ul>
-    {{/if}}
-    Go to <a href="/" data-path>Home page</a>
+  <img class="logomin" src="../../images/logo.png" alt="logo sweet life">
+  <div id="form">
+    <form class="form" id="person">
+        <label>e-mail</label><br>
+        <input class="inputfield" name="signup_email" id="signup_email" type="email" placeholder="e-mail"><br>
+
+        <label>wachtwoord</label><br>
+        <input class="inputfield" name="signup_password" id="signup_password" type="password" placeholder="password"><br>
+
+        <input name="person" id="kotbaas" type="radio" value="kotbaas"><label>Kotbaas</label>
+        <input name="person" id="student" type="radio" value="student"><label>student</label><br>
+
+        <button class="btn_layout" id="btn_signup" type="submit">ga verder</button>
+    </form>
+    <div id="signup_error"></div>
   </div>
 </div>
-{{> footer }}
+<script src="/pages/firebase-example.js"></script>

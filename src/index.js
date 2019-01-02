@@ -27,7 +27,10 @@ router.notFound(() => {
 router.resolve();
 window.onload = () => {
   document.onclick = (e) => {
-    e.preventDefault();
-    router.navigate(e.target.getAttribute('href'));
+    // e.preventDefault();
+    const target = e.target.getAttribute('href');
+    if (target != null) {
+      router.navigate(target);
+    }
   };
 };

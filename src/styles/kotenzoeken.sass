@@ -1,0 +1,27 @@
+div#ktnkeuze, div#berichten
+  display: flex
+  flex-direction: column
+  width: 90%
+  margin: auto
+
+a.ktn
+  margin-bottom: 40px
+  text-decoration: none
+  font-family: Arial, Helvetica, sans-serif
+  font-size: 20px
+  padding: 10px
+  color: white
+  border-radius: 80px
+  background: $btn-gradient-color
+  text-align: center
+
+@media screen and (min-width: 992px)
+  div#ktnkeuze
+    width: 70%
+  
+  a.ktn
+    border-radius: 0px
+    border: 2px solid $lightpink-color
+    color: $lightpink-color
+    background: none
+    background-color: white
