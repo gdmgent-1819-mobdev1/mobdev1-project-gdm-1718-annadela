@@ -25,11 +25,9 @@ export default () => {
   }
 
   if (sessionStorage.getItem('edit')) {
-    console.log('insession');
     let data = firebase.database().ref(`koten`);
     data.on('value', (snapshot) => {
       snapshot.forEach((post) => {
-        console.log('insnapshot')
         if (sessionStorage.getItem('edit') == post.key) {
           document.getElementById('huurprijs').value = post.val().huurprijs;
           document.getElementById('waarborg').value = post.val().waarborg;
@@ -54,7 +52,6 @@ export default () => {
   }
 
   let user = JSON.parse(localStorage.getItem('User'));
-  console.log(user);
   document.getElementById('nameKotbaas').value = user.classnaam;
   document.getElementById('firstnameKotbaas').value = user.classvoornaam;
   document.getElementById('emailKotbaas').value = user.classmail;

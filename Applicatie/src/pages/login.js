@@ -33,7 +33,6 @@ export default () => {
     let emailAddress = document.getElementById('login_email').value;
 
     firebase.auth().sendPasswordResetEmail(emailAddress).then( () => {
-      console.log('send email');
     }).catch((error) => {
       document.getElementById('login_error').innerHTML = 'vul uw emailadress eerst in';
     });
@@ -66,7 +65,6 @@ export default () => {
       .catch((error) => {
         let errorCode = error.code;
         let errorMessage = error.message;
-        console.log(errorCode, errorMessage);
         document.getElementById('login_error').innerHTML = `${errorCode} - ${errorMessage}`;
       });
   }

@@ -17,23 +17,19 @@ export default () => {
   const title = 'Firebase';
   // Return the compiled template to the router
   update(compile(aboutTemplate)({ title, loading, posts }));
-  console.log(document.getElementById('campuslijst'));
   
   let addList = (data) => {
     let postvalue = data.key;
-    console.log(postvalue);
     let cardKot = data.val();
     document.getElementById('lijstkoten').innerHTML += `<div class="unordedlist"><h1>${cardKot.type}</h1><p id="prijs">huurprijs ${cardKot.huurprijs}euro</p><br><p id="prijs">oppervlakte ${cardKot.opervlakte}m²</p><br><p id="prijs">toillet: ${cardKot.toillet}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">bad: ${cardKot.bad}</p><br><p id="prijs">keuken: ${cardKot.keuken}</p><br><p id="prijs">Adress: ${cardKot.straat} ${cardKot.huisnr} ${cardKot.gemeente}</p><button class="littlebtn top" id="${postvalue}">bekijk detail</button><button class="littlebtn top" id="${postvalue}">favoriet</button>`;
     document.getElementById('lijstkoten').addEventListener('click', (e) => {
       if (e.target && e.target.nodeName == 'BUTTON' && e.target.innerHTML == 'favoriet') {
         let personKey = localStorage.getItem('key');
         let targetId = e.target.id;
-        console.log(targetId);
         firebase.database().ref(`favoriet/${personKey}/${targetId}`).set(targetId);
       }
       if (e.target && e.target.nodeName == 'BUTTON' && e.target.innerHTML == 'bekijk detail') {
         sessionStorage.setItem('key', e.target.id);
-        console.log(e.target.innerHTML);
         window.location.replace('/#/detailPage');
       }
     });
@@ -88,8 +84,6 @@ export default () => {
     let dataPerson = firebase.database().ref(`koten`);
     dataPerson.on('value', (snapshot) => {
       snapshot.forEach((post) => {
-        console.log(post.key);
-        console.log((post.val().kotbaasEmail) == localStorage.getItem('emailPerson'));
         if ((post.val().kotbaasEmail) == localStorage.getItem('emailPerson')) {
           let cardKot = post.val();
           document.getElementById('campuslijst').innerHTML += `<div class="unordedlist"><h1>${cardKot.type}</h1><p id="prijs">huurprijs ${cardKot.huurprijs}euro</p><br><p id="prijs">oppervlakte ${cardKot.opervlakte}m²</p><br><p id="prijs">toillet: ${cardKot.toillet}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">bad: ${cardKot.bad}</p><br><p id="prijs">keuken: ${cardKot.keuken}</p><br><p id="prijs">Adress: ${cardKot.straat} ${cardKot.huisnr} ${cardKot.gemeente}</p><br><button class="littlebtn" id="${post.key}">bewerken</button><button class="littlebtn" id="${post.key}">verwijderen</button>`;
@@ -111,11 +105,9 @@ export default () => {
   let typeFunction = () => {
     let type = document.getElementById('type');
     let chosetype = type.options[type.selectedIndex].value;
-    console.log(chosetype);
     let dataKot = firebase.database().ref('koten');
     dataKot.on('value', (snapshot) => {
       snapshot.forEach((data) => {
-        console.log(data.val().type);
         if (chosetype == 'Kamer' && data.val().type == 'kamer') {
           addList(data);
         }
@@ -129,11 +121,9 @@ export default () => {
   let huurprijsFunction = () => {
     let min = document.getElementById('min').value;
     let max = document.getElementById('max').value;
-    console.log(min, max);
     let dataKot = firebase.database().ref('koten');
     dataKot.on('value', (snapshot) => {
       snapshot.forEach((data) => {
-        console.log(data.val().huurprijs);
         if (data.val().huurprijs > min && data.val().huurprijs < max) {
           addList(data);
         }

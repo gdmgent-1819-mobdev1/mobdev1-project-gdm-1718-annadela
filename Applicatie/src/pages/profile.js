@@ -12,7 +12,6 @@ export default () => {
   update(compile(aboutTemplate)({ name }));
 
   let profile = JSON.parse(localStorage.getItem('User'));
-  console.log(profile);
 
   document.getElementById('profile_name').innerHTML = `${profile.classnaam} ${profile.classvoornaam}`;
   document.getElementById('profile_geg').innerHTML = `<p>${profile.classmail}</p><p>${profile.classtel}</p><div><p>${profile.classstraat} ${profile.classhuisnr}</p><p>${profile.classgemeente}</p></div><p>studeert aan ${profile.classhs}</p>`;

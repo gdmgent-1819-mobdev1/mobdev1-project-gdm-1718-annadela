@@ -25,11 +25,8 @@ export default () => {
     let favokot = firebase.database().ref(`favoriet/${keyPerson}`);
     favokot.on('value', (snapshot) => {
       snapshot.forEach((data) => {
-        // console.log(data.key);
         let cardKot = post.val();
         if (data.key == post.key) {
-          console.log(post.val().gemeente);
-          console.log(post.key);
           document.getElementById('favo').innerHTML += `<div class="unordedlist"><h1>${cardKot.type}</h1><p id="prijs">huurprijs ${cardKot.huurprijs}euro</p><br><p id="prijs">oppervlakte ${cardKot.opervlakte}m²</p><br><p id="prijs">toillet: ${cardKot.toillet}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">douche: ${cardKot.douche}</p><br><p id="prijs">bad: ${cardKot.bad}</p><br><p id="prijs">keuken: ${cardKot.keuken}</p><br><p id="prijs">Adress: ${cardKot.straat} ${cardKot.huisnr} ${cardKot.gemeente}</p><button class="littlebtn top" id="${post.key}">Verwijder uit favorieten</button>`;
           document.getElementById('favo').addEventListener('click', (e) => {
             if (e.target && e.target.nodeName == 'BUTTON' && e.target.innerHTML == 'Verwijder uit favorieten') {

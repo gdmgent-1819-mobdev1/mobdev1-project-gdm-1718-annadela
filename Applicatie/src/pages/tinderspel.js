@@ -69,7 +69,6 @@ export default () => {
         clickCounter += 1;
         getCard();
       } else {
-        console.log(`${JSON.parse(localStorage.getItem(clickCounter)).kotkey} dislike`);
         localStorage.removeItem(clickCounter);
         clickCounter += 1;
         getCard();

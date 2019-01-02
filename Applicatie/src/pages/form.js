@@ -21,7 +21,6 @@ export default () => {
   let userId = localStorage.getItem('key');
   let placeProperty = document.getElementById('property');
   let property = localStorage.getItem('eigenschap');
-  console.log(property);
   if (property === 'student') {
     placeProperty.innerHTML += 'Student';
     document.getElementById('student').innerHTML = '<label>Universiteit/hogeschool</label><br><input name="student_school" id="student_school" type="input" placeholder="school">';
@@ -35,7 +34,6 @@ export default () => {
     let name = document.getElementById('naam').value;
     let firstname = document.getElementById('vn').value;
     let email = localStorage.getItem('emailPerson');
-    console.log(email);
     let street = document.getElementById('straat').value;
     let number = document.getElementById('nr').value;
     let town = document.getElementById('gemeente').value;
@@ -54,7 +52,6 @@ export default () => {
       });
     } else {
       let school = document.getElementById('student_school').value;
-      console.log(school);
       firebase.database().ref(`gegevens/${userId}`).push({
         eigenschap: property,
         naam: name,

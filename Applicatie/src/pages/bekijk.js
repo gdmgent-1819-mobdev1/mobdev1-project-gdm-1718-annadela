@@ -21,7 +21,6 @@ export default () => {
   let kotbaasemail = localStorage.getItem('emailPerson');
   let kotbaasMail = (data, post) => {
     let berichtinfo = post.val();
-    console.log(berichtinfo.sender);
     if (berichtinfo.kotbaasmail == kotbaasemail) {
       document.getElementById('messages').innerHTML += `<div class="message dark" id="${post.key}"><h2>${berichtinfo.title}</h2><p>${berichtinfo.message}</p><blockquote>${berichtinfo.studentmail}</blockquote></div>`;
       if (!(berichtinfo.sender == 'kotbaas')) {
@@ -38,10 +37,8 @@ export default () => {
 
   let studentMail = (data, post) => {
     let berichtinfo = post.val();
-    console.log(post.key);
     if (berichtinfo.studentmail == kotbaasemail) {
       document.getElementById('messages').innerHTML += `<div  class="message bright" id="${post.key}"><h2>${berichtinfo.title}</h2><p>${berichtinfo.message}</p><blockquote>${berichtinfo.kotbaasmail}</blockquote></div>`;
-      console.log(berichtinfo.sender);
       if (berichtinfo.sender !== 'student') {
         document.getElementById(post.key).innerHTML += `<button id="${data.key}">antwoorden</button>`;
         document.getElementById('messages').addEventListener('click', (e)=> {

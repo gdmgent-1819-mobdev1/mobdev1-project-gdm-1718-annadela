@@ -47,10 +47,7 @@ export default () => {
   // OPSLAAN CLASS
   function showAccount(data) {
     let postvalue = data.key;
-    console.log(postvalue);
     let postAccount = data.val();
-    console.log(postAccount);
-    console.log(postAccount.naam);
     localStorage.setItem('eigenschap', postAccount.eigenschap);
     let elem = document.getElementById('welcome');
     elem.className = 'name';
@@ -58,7 +55,6 @@ export default () => {
     let koten = document.getElementById('koten');
     if (postAccount.eigenschap === 'kotbaas') {
       let person = new Kotbaas(postAccount.naam, postAccount.voornaam, postAccount.mail, postAccount.straat, postAccount.huisnr, postAccount.gemeente, postAccount.tel);
-      console.log(JSON.stringify(person));
       localStorage.setItem('User', (JSON.stringify(person)));
     } else {
       let person = new Student(postAccount.naam, postAccount.voornaam, postAccount.mail, postAccount.straat, postAccount.huisnr, postAccount.gemeente, postAccount.tel, postAccount.hs);

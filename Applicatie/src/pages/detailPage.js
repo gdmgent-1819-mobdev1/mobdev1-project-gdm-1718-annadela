@@ -19,9 +19,7 @@ export default () => {
   // Return the compiled template to the router
   update(compile(aboutTemplate)({ title, loading, posts }));
 
-  console.log('hi');
   let keyvalue = sessionStorage.getItem('key');
-  console.log(keyvalue);
 
   // OPSLAAN CLASS
   function showAccount(post) {

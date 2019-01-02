@@ -28,9 +28,7 @@ export default () => {
   });
   function showAccount(post) {
     let postvalue = post.key;
-    console.log(postvalue);
     let postAccount = post.val();
-    console.log(postAccount.latitude, postAccount.longitude);
     map.on("load", () => {
       map.addSource(`${post.key}`, {
         "type": "geojson",

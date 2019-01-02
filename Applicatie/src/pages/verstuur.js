@@ -32,7 +32,6 @@ export default () => {
       let onderwerp = document.getElementById('onderwerp').value;
       let email = document.getElementById('email').value;
       let bericht = document.getElementById('bericht').value;
-      console.log(onderwerp, email, bericht);
       berichten.innerHTML = '<p>bericht verzonden</p>';
 
       firebase.database().ref(`berichten/${nameUser}/`).push({
@@ -52,13 +51,11 @@ export default () => {
     let data = firebase.database().ref(`berichten/${personMessage}`);
     data.on('value', (snapshot) => {
       snapshot.forEach((post) => {
-        console.log(post.val());
         chat.innerHTML = `<form><label class="label">Titel</label><br><input class="inputfield" type="text" id="onderwerp" placeholder="onderwerp" value="${post.val().title}"><br><labelclass="label" >contact email</label><br></input><input class="inputfield" id="email" type="email" placeholder="email student"  value="${post.val().studentmail}"></input><br><labelclass="label">type bericht</label><br><textarea class="inputfield" id="bericht"></textarea><br><button id="verstuur" type="submit">Verzend</button></form>`;
         document.getElementById('verstuur').addEventListener('click', (e) => {
           let onderwerp = document.getElementById('onderwerp').value;
           let email = document.getElementById('email').value;
           let bericht = document.getElementById('bericht').value;
-          console.log(onderwerp, email, bericht);
           berichten.innerHTML = '<p>bericht verzonden</p>';
           window.location.replace('/#/bekijk');
     

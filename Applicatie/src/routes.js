@@ -1,7 +1,6 @@
 // Pages
 import HomeView from './pages/home';
 import FirebaseView from './pages/firebase-example';
-import MapboxView from './pages/mapbox-example';
 import FormView from './pages/form';
 import LoginView from './pages/login';
 import StartView from './pages/start';
@@ -20,7 +19,6 @@ import TinderView from './pages/tinderspel';
 export default [
   { path: '/', view: HomeView },
   { path: '/firebase', view: FirebaseView },
-  { path: '/mapbox', view: MapboxView },
   { path: '/form', view: FormView },
   { path: '/login', view: LoginView },
   { path: '/start', view: StartView },
